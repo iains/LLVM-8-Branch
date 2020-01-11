@@ -458,7 +458,8 @@ bool generateDsymCompanion(const DebugMap &DM, SymbolMapTranslator &Translator,
   SymtabStart = alignTo(SymtabStart, 0x1000);
 
   // We gathered all the information we need, start emitting the output file.
-  Writer.writeHeader(MachO::MH_DSYM, NumLoadCommands, LoadCommandSize, false);
+  Writer.writeHeader(MachO::MH_DSYM, NumLoadCommands, LoadCommandSize,
+                     false, 0 /*subtype override*/);
 
   // Write the load commands.
   assert(OutFile.tell() == HeaderSize);
